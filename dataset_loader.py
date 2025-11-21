@@ -28,11 +28,10 @@ def download_dataset(dataset: str) -> str:
     return path
 
 
-def load_dataset_amazon(file: str) -> pd.DataFrame:
+def load_dataset_amazon(dataset_file: str, text_full: bool) -> pd.DataFrame:
 
     # Kaggle dataset
     dataset_name = "kritanjalijain/amazon-reviews"
-    dataset_file = file
 
     # Download dataset
     path = download_dataset(dataset_name)
@@ -47,13 +46,10 @@ def load_dataset_amazon(file: str) -> pd.DataFrame:
         names=["label", "title", "comment"]
     )
 
+    # Combine title and comment into text_full
+    if text_full:
+        dataset["text_full"] = (dataset["title"].astype(str) + " " + dataset["comment"].astype(str)).str.strip()
+        dataset["length"] = dataset["text_full"].str.len()
+
+
     return dataset
-
-
-def load_dataset_amazon_test() -> pd.DataFrame:
-    return load_dataset_amazon("test.csv")
-
-
-def load_dataset_amazon_train() -> pd.DataFrame:
-    return load_dataset_amazon("train.csv")
-
