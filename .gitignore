@@ -3,6 +3,7 @@ datasets/
 
 # Temporary files
 tmp/
+artifacts/
 
 # Environments
 .env
