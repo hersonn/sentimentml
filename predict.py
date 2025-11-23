@@ -190,7 +190,7 @@ def main():
     print(args.text)
     print("\nPrediction:")
     print(f"Label: {result['label']}")
-    print(f"Score: {result['score']:.4f}")
+    print(f"Score: {result['score']}")
 
 
 if __name__ == "__main__":
