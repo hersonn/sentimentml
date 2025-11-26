@@ -4,8 +4,10 @@ from pathlib import Path
 TMP_DIR = Path("tmp")
 
 
-# Delete tmp directory if it exists and recreate it from scratch.
 def create_tmp() -> None:
+    """
+    Delete tmp directory if it exists and recreate it from scratch.
+    """
     if TMP_DIR.exists():
         shutil.rmtree(TMP_DIR)
 
@@ -13,8 +15,10 @@ def create_tmp() -> None:
     print(f"Recreated directory: {TMP_DIR.resolve()}")
 
 
-# Delete tmp directory if it exists.
 def delete_tmp() -> None:
+    """
+    Delete tmp directory if it exists.
+    """
     if TMP_DIR.exists():
         shutil.rmtree(TMP_DIR)
         print(f"Deleted directory: {TMP_DIR.resolve()}")
